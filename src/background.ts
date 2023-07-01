@@ -1,21 +1,56 @@
 'use strict';
 
-// With background scripts you can communicate with popup
-// and contentScript files.
-// For more information on background script,
-// See https://developer.chrome.com/extensions/background_pages
-
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.type === 'GREETINGS') {
-    const message: string = `Hi ${
-      sender.tab ? 'Con' : 'Pop'
-    }, my name is Bac. I am from Background. It's great to hear from you.`;
-
-    // Log message coming from the `request` parameter
-    console.log(request.payload.message);
-    // Send a response message
-    sendResponse({
-      message,
+chrome.runtime.onInstalled.addListener(() => {
+    chrome.contextMenus.create({
+        id: 'highlight',
+        title: 'Highlight',
+        contexts: ['selection', 'page', 'image', 'link'],
     });
-  }
+
+    chrome.contextMenus.onClicked.addListener((data) => {
+        console.log(data);
+        let value;
+        let { selectionText, srcUrl, mediaType, linkUrl, pageUrl } = data;
+
+        if (mediaType === 'image') {
+            value = srcUrl;
+        } else if (mediaType === 'video') {
+            value = srcUrl;
+        } else {
+            value = linkUrl || selectionText
+        }
+
+        chrome.runtime.sendMessage({
+            name: 'new-highlight',
+            data: {
+                value,
+                url: pageUrl
+            },
+        });
+    });
+});
+
+chrome.sidePanel
+    .setPanelBehavior({ openPanelOnActionClick: true })
+    .catch((error) => console.error(error));
+
+chrome.tabs.onUpdated.addListener(async (tabId, info, tab) => {
+    if (!tab.url) return;
+
+    const url = new URL(tab.url);
+
+    chrome.runtime.sendMessage({
+        name: 'new-url',
+        data: {
+            url: url.href,
+            title: tab.title,
+        },
+    });
+
+    // Enables the side panel on google.com
+    await chrome.sidePanel.setOptions({
+        tabId,
+        path: 'side_panel.html',
+        enabled: true
+    });
 });

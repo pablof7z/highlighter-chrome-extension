@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Higlighter Chrome V2",
+  "name": "Higlighter Extension",
   "version": "0.1.0",
-  "description": "My Chrome Extension",
+  "description": "Highlight text on web pages into Nostr",
   "icons": {
     "16": "icons/icon_16.png",
     "32": "icons/icon_32.png",
@@ -13,21 +13,16 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_title": "Higlighter Chrome V2",
-    "default_popup": "popup.html"
+    "default_title": "Higlighter"
+  },
+  "side_panel": {
+    "default_path": "side_panel.html",
+    "openPanelOnActionClick": true
   },
   "permissions": [
-    "storage"
-  ],
-  "content_scripts": [
-    {
-      "matches": [
-        "<all_urls>"
-      ],
-      "run_at": "document_idle",
-      "js": [
-        "contentScript.js"
-      ]
-    }
+    "storage",
+    "contextMenus",
+    "sidePanel",
+    "tabs"
   ]
 }

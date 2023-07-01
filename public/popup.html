@@ -6,18 +6,29 @@
     <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
-    <div class="app">
-      <p class="counter-label">Counter</p>
-      <div id="counter" class="counter"></div>
-      <div class="button-container">
-        <button id="decrementBtn" class="button">-</button>
-        <button id="incrementBtn" class="button">+</button>
+    <div id="app" class="app">
+      <div>
+          <h2>Current URL:</h2>
+          <span id="url"></span>
       </div>
+      <p>
+        Current npub:
+        <span id="npub"></span>
+        <a href="#" id="openSettings">Settings</a>
+      </p>
 
-      <hr class="divider" />
+      <hr class="divider">
 
-      <p class="title">Chrome Extension is Ready!</p>
-      <p class="subtitle">Start by updating <code>popup.html</code></p>
+      <p>Relays: <span id="totalConnected"></span></p>
+    </div>
+
+    <div id="settings" class="app">
+      <p>enter your npub (to use with nsecBunker)</p>
+      <input type="text" id="npubField">
+
+      <hr class="divider">
+
+      <button class="button" id="save">Save</button>
     </div>
 
     <script src="popup.js"></script>

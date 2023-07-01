@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Sidepanel</title>
+
+        <style>
+            #bookmark-container {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            #url1 {
+                /* wrap long urls */
+                word-break: break-all;
+            }
+
+            .highlight-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                align-items: stretch;
+            }
+
+            .highlight-card, .bookmark-card {
+                background-color: #fae3a5;
+                border: 1px solid #e7ac0b;
+                border-radius: 3px;
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+                padding: 10px;
+                font-size: 16px;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 10px;
+            }
+
+            #url2 {
+                font-size: 12px;
+                opacity: 0.5;
+            }
+
+            select, input[type="text"], textarea {
+                border-radius: 5px;
+                padding: 5px;
+                font-size: 16px;
+            }
+
+            button {
+                border-radius: 5xp;
+                background-color: #ff8420;
+                font-weight: 600;
+                color: white;
+                font-size: 16px;
+                padding: 10px;
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+                border: 0;
+                cursor: pointer;
+            }
+
+            button.cancel {
+                background-color: #d1d1d1;
+            }
+
+            .list, .app {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .title {
+                font-size: 20px;
+                font-weight: 600;
+                margin: 10px 0;
+            }
+
+            .subtitle {
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+            .comment {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app" class="app">
+            <div id="bookmark-container">
+                <div class="title">Add Bookmark</div>
+
+                <div class="bookmark-card" id="url1"></div>
+            </div>
+
+
+            <div id="highlight-container" class="highlight-container">
+                <div class="title">Add Highlight</div>
+
+                <div class="highlight-card">
+                    <div id="highlight"></div>
+                    <div id="url2"></div>
+                </div>
+
+                <input type="text" id="tags" placeholder="tag1, tag2">
+            </div>
+
+            <div class="comment">
+                <div class="subtitle">Comment (optional)</div>
+                <textarea id="comment" rows="10"></textarea>
+            </div>
+
+            <div class="list">
+                <label class="subtitle">Choose List (optional)</label>
+                <select id="lists">
+                    <option value="">Don't add to any list</option>
+                </select>
+            </div>
+
+            <button id="save">Save</button>
+
+            <hr>
+
+            <p>
+                Current npub:
+                <span id="npub"></span>
+                <a href="#" id="openSettings">Settings</a>
+            </p>
+
+            <hr class="divider">
+
+            <p>Relays: <span id="totalConnected"></span></p>
+            <span id="connectedRelays"></span>
+        </div>
+
+        <div id="settings" class="app">
+            <div class="title">Enter your npub</div>
+            <div class="subtitle">(to use with nsecBunker)</div>
+            <textarea type="text" id="npubField" rows="3" style="width: 100%;"></textarea>
+
+            <hr class="divider">
+
+            <div class="title">Relays to publish to</div>
+            <textarea type="text" id="relays" rows="6" style="width: 100%;"></textarea>
+
+            <hr class="divider">
+
+            <button class="button" id="settings-save">Save</button>
+            <button class="button cancel" id="closeSettings">Cancel</button>
+        </div>
+
+        <script src="side_panel.js"></script>
+    </body>
+</html>

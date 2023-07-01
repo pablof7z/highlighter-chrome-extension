@@ -1,7 +1,7 @@
 {
-  "name": "higlighter-chrome-v2",
+  "name": "higlighter",
   "version": "0.1.0",
-  "description": "My Chrome Extension",
+  "description": "Highlight text on web pages into Nostr",
   "private": true,
   "scripts": {
     "watch": "webpack --mode=development --watch --config config/webpack.config.js",
@@ -11,6 +11,7 @@
     "format": "prettier --write --ignore-unknown \"{config,public,src}/**/*.{html,css,js,ts,json}\""
   },
   "devDependencies": {
+    "@nostr-dev-kit/ndk": "^0.7.0",
     "@types/chrome": "^0.0.181",
     "adm-zip": "^0.5.10",
     "copy-webpack-plugin": "^10.2.4",
