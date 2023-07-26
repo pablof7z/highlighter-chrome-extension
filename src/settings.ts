@@ -45,8 +45,8 @@ document.getElementById('closeSettings')!.addEventListener('click', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     chrome.storage.sync.get(['npub', 'relays'], ({npub, relays}) => {
-        document.getElementById('npubField')!.value = npub||"";
-        document.getElementById('relays')!.value = relays||(publishingRelays.join('\n'));
+        (document.getElementById('npubField') as HTMLInputElement)!.value = npub||"";
+        (document.getElementById('relays') as HTMLInputElement)!.value = relays||(publishingRelays.join('\n'));
         document.getElementById('npub')!.innerText = npub;
     });
 });

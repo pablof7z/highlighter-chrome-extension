@@ -132,7 +132,7 @@ async function loadLists() {
     const listEl = document.body.querySelector('#lists');
 
     runWithNDK(async (ndk) => {
-        const npubEl = document.body.querySelector('#npub');
+        const npubEl = document.body.querySelector<HTMLElement>('#npub');
         const user = await ndk.signer?.user();
 
         if (!user) {
@@ -142,8 +142,9 @@ async function loadLists() {
 
         npubEl.innerText = user?.npub || 'no npub';
 
+        const kinds: number[] = [30001]
         const sub = ndk.subscribe({
-            kinds: [30001],
+            kinds,
             authors: [ user.hexpubkey() ]
         });
 
@@ -163,28 +164,28 @@ async function loadLists() {
 }
 
 function showBookmark() {
-    document.body.querySelector('#bookmark-container').style.display = 'flex';
+    document.body.querySelector<HTMLElement>('#bookmark-container').style.display = 'flex';
     hideHighlight();
 }
 
 function hideBookmark() {
-    document.body.querySelector('#bookmark-container').style.display = 'none';
+    document.body.querySelector<HTMLElement>('#bookmark-container').style.display = 'none';
 }
 
 function hideHighlight() {
-    document.body.querySelector('#highlight-container').style.display = 'none';
+    document.body.querySelector<HTMLElement>('#highlight-container').style.display = 'none';
 }
 
 function showHighlight({value}: {value: string}) {
-    document.body.querySelector('#highlight-container').style.display = 'flex';
-    document.body.querySelector('#highlight').innerText = value;
+    document.body.querySelector<HTMLElement>('#highlight-container').style.display = 'flex';
+    document.body.querySelector<HTMLElement>('#highlight').innerText = value;
     hideBookmark();
 }
 
 function updateUrl({url, title}: {url: string, title: string}) {
     currentURL = url;
     currentTitle = title;
-    document.body.querySelector('#url1').innerText = url;
-    document.body.querySelector('#url2').innerText = url;
+    document.body.querySelector<HTMLElement>('#url1').innerText = url;
+    document.body.querySelector<HTMLElement>('#url2').innerText = url;
 }
 

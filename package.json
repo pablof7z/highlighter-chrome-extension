@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@nostr-dev-kit/ndk": "^0.7.0",
-    "@types/chrome": "^0.0.181",
+    "@types/chrome": "^0.0.242",
     "adm-zip": "^0.5.10",
     "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.8.1",
