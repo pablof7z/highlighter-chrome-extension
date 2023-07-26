@@ -67,7 +67,7 @@ export async function runWithNDK(cb?: (ndk: NDK) => void) {
                 }
 
                 if (relays) {
-                    const relayArray = relays.split(/(,|\n)+/).map((relay) => relay.trim());
+                    const relayArray = relays.split(/(,|\n)+/).map((relay: string) => relay.trim());
 
                     publishingNDK = await prepareNDK(undefined, relayArray);
                 }

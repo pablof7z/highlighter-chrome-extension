@@ -7,11 +7,12 @@ export async function addEventToList(ndk: NDK, dTag: string, event: NDKEvent, en
         throw new Error('User not found');
     }
 
-    const listEvent = await ndk.fetchEvent({
+    const fetchEventId = {
         kinds: [30001],
         '#d': [dTag],
         authors: [user.hexpubkey()],
-    });
+    }
+    const listEvent = await ndk.fetchEvent( fetchEventId as unknown as string);
 
     if (listEvent) {
         listEvent.created_at = Math.floor(Date.now() / 1000);
