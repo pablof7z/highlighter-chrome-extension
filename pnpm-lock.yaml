@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -9,8 +9,8 @@ devDependencies:
     specifier: ^0.7.0
     version: 0.7.0(typescript@4.6.3)
   '@types/chrome':
-    specifier: ^0.0.181
-    version: 0.0.181
+    specifier: ^0.0.242
+    version: 0.0.242
   adm-zip:
     specifier: ^0.5.10
     version: 0.5.10
@@ -456,8 +456,8 @@ packages:
     resolution: {integrity: sha512-YQi2lvZSI+xidKeUjlbv6b6Zw7qB3aXHw5oGJLs5OOGAEqKIOvz5UIAkWyg0bJbkSUWPBEtaOHpVxU4EYBO1Jg==}
     dev: true
 
-  /@types/chrome@0.0.181:
-    resolution: {integrity: sha512-34Ln9YVVC8a195ruqWeaty3pouFdCLr9L5kPcbRflQcxnbXQnHor9uETof8OhDf8JLDytSRDiuDsRXYQYQ+9FA==}
+  /@types/chrome@0.0.242:
+    resolution: {integrity: sha512-SeMXBSfcAGX9ezTz7Pro7n/AiNdIH3cetkdbM+Kfg3zD24jmbnm0IAEIxzx8ccqrnJenLCfD7fR+4WIYAbeQHw==}
     dependencies:
       '@types/filesystem': 0.0.32
       '@types/har-format': 1.2.11

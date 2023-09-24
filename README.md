@@ -9,7 +9,28 @@ My Chrome Extension
 
 ## Install
 
-[**Chrome** extension]() <!-- TODO: Add chrome extension link inside parenthesis -->
+[**Chrome** extensions](chrome://extensions/)
+
+## Setup
+
+### Local Development
+
+```
+git clone [this repo]
+cd [this repo dir]
+npm run deps
+npm run watch
+```
+
+This should get you started developing, it will create a `build`
+directory that you can load into your browser as an extension if you turn on
+extensions developer mode.
+
+![Load Chrom Extensions](./docs/load-chrome-extensions.png)
+
+See also [Mozilla: Your First Extension](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension)
+and [Chrome: Getting Started Tutorial](https://developers.chrome.com/extensions/getstarted) for information
+about developing extensions.
 
 ## Contribution
 

@@ -27,6 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function updateRelayStats() {
+    if (!publishingNDK) {
+        // TODO: Fix hack
+        // When DOMContentReady is called publishingNDK can still be undefined and
+        // cause a crash in some browsers, include a defined check before calling.
+        return;
+    }
     const stats = publishingNDK.pool.stats();
 
     document.getElementById('totalConnected')!.innerHTML = JSON.stringify(stats);
